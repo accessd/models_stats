@@ -1,0 +1,8 @@
+/*
+ *= require bootstrap.min
+ *= require metricsgraphics
+ */
+
+.models_stats_graph .chart_title {
+  font-size: 15px;
+}

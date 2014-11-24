@@ -1,0 +1,16 @@
+<script type="text/javascript">
+  $(function(){
+    keys = <%= keys.to_json.html_safe %>
+    data = <%= stat_data.to_json.html_safe %>
+    new ModelStatisticsGraph('<%= graph_title %>', keys, data, '<%= stat_alias %>', <%= width %>, <%= height %>)
+  })
+</script>
+
+<% if stat_data.empty? %>
+  No data
+<% else %>
+  <div class="models_stats_graph">
+    <div class='col-lg-6 text-center extended-y-ticks' id='<%= stat_alias %>_statistics'></div>
+    <div class='<%= stat_alias %>_statistics_legend'></div>
+  </div>
+<% end %>
