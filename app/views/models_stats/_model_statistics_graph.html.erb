@@ -7,10 +7,14 @@
 </script>
 
 <% if stat_data.empty? %>
+  <%= graph_title %>
+  </br>
   No data
+  </br>
+  </br>
 <% else %>
-  <div class="models_stats_graph">
-    <div class='col-lg-6 text-center extended-y-ticks' id='<%= stat_alias %>_statistics'></div>
-    <div class='<%= stat_alias %>_statistics_legend'></div>
+  <div class="models_stats_graph" style='clear: both;'>
+    <div class='<%= stat_alias %>_statistics_legend legend' style='float: right;'></div>
+    <div class='col-lg-12 text-center extended-y-ticks' id='<%= stat_alias %>_statistics'></div>
   </div>
 <% end %>

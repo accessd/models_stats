@@ -25,7 +25,7 @@ module ModelsStats
           converted_stat = convert_stat(stat_for_model, model, group_by_values_map)
           group_by_values_map.each do |index, value|
             unless converted_stat.keys.map(&:to_s).include?(value.to_s)
-              converted_stat[value] = 0
+              converted_stat[value.to_s] = 0
             end
           end
           converted_stat
@@ -44,11 +44,12 @@ module ModelsStats
     end
 
     def convert_stat(stat_for_model, model, converter)
-      p converter
       stat_hash = {}
       stat_for_model.each do |s|
         group_by_attr_value = s.attributes.values[1]
-        p group_by_attr_value
+        if [TrueClass, FalseClass].include?(group_by_attr_value.class)
+          group_by_attr_value = group_by_attr_value.to_s.to_sym
+        end
         key = converter[group_by_attr_value]
         stat_hash[key] = s.count
       end

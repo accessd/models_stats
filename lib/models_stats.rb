@@ -5,12 +5,12 @@ require "models_stats/statistics_collector"
 
 module ModelsStats
   mattr_accessor :redis_connection
-  DEFAULT_GRAPH_WIDTH = 375
-  DEFAULT_GRAPH_HEIGHT = 180
+  DEFAULT_GRAPH_WIDTH = 500
+  DEFAULT_GRAPH_HEIGHT = 120
 
   class Engine < Rails::Engine
     initializer "models_stats.load_app_root" do |app|
-      ModelsStats::CONFIG = YAML.load(ERB.new(File.read(Rails.root.join("config", "models_stats.yml").to_s)).result)
+      ModelsStats::CONFIG = YAML.load(ERB.new(File.read(Rails.root.join("config", "models_stats.yml").to_s)).result) rescue []
     end
   end
 
