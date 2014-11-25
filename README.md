@@ -48,6 +48,10 @@ Add config file `config/models_stats.yml`, for example:
       model: KeywordPosition
 ```
 
+If you want using specific redis for store statistics, set it in `config/initializers/models_stats.rb`, for example:
+
+    ModelsStats.redis_connection = Redis.new(host: '127.0.0.1', port: 6379, db: 5)
+
 ### Collecting statistics
 
 Add to your crontab(may use [whenever](https://github.com/javan/whenever)) rake task `models_stats:collect_stat_for_yesterday`, run it at 00:00 or later and it will collect statistics for yesterday.
