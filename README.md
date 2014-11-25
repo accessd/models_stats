@@ -64,8 +64,13 @@ Also you may collect statistics for specific date and config, for example:
 
 In your views use helpers:
 
-    = render_models_stats_graph('total_links', 1.month) # Render single graphic for total_links stat and last month
-    = render_models_stats_dashboard # Render all defined graphics splited by two columns - first for new models count, second for total models count
+Render single graphic for total_links stat and last month
+
+    = render_models_stats_graph('total_links', 1.month)
+
+Render all defined graphics splited by two columns - first for new models count, second for total models count
+
+    = render_models_stats_dashboard
 
 ## Contributing
 
