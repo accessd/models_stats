@@ -65,7 +65,7 @@ Also you may collect statistics for specific date and config, for example:
 ```ruby
   date = 2.days.ago.to_date
   statistics_alias = 'total_links'
-  ModelsStats::StatisticsCollector.new.collect(date, statistics_alias)
+  ModelsStats::StatisticsCollector.new.collect(statistics_alias, date)
 ```
 
 ### Display graphics

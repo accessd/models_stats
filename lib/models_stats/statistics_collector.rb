@@ -2,7 +2,7 @@ module ModelsStats
   class StatisticsCollector
     attr_accessor :date
 
-    def collect(date = 1.day.ago.to_date, stat_alias = nil)
+    def collect(stat_alias = nil, date = 1.day.ago.to_date)
       self.date = date
       stat_params = ModelsStats::CONFIG.select{|params| name, p = params.first; name.to_s == stat_alias.to_s}
       models = if stat_params.empty?
