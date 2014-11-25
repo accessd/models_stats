@@ -3,6 +3,10 @@
 Graphics for your rails models. It uses [MetricsGraphics.js](https://github.com/mozilla/metrics-graphics).
 Dependencies: [Redis](http://redis.io/) for store statistics; [D3](http://d3js.org/), [jQuery](http://jquery.com/), [Bootstrap](http://getbootstrap.com/) it's dependencies of MetricsGraphics.js.
 
+Preview:
+
+![ScreenShot](https://raw.github.com/accessd/models_stats/master/doc/img/stat_example.png)
+
 ## Installation
 
 Add this line to your application's Gemfile:
