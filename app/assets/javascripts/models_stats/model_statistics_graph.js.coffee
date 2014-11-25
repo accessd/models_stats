@@ -32,7 +32,7 @@ class @ModelStatisticsGraph
       width: @width
       height: @height
       bottom: 0
-      top: 0
+      top: 20
       show_years: false
       y_extended_ticks: true
       xax_count: 30
