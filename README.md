@@ -1,13 +1,21 @@
 # ModelsStats
 
 Graphics for your rails models. It may show count(or average, or sum, or another sql agregate function) of models for each day with grouping, conditions.
+
 For graphics it uses for your choice [MetricsGraphics.js](https://github.com/mozilla/metrics-graphics) or/and [NVD3](http://nvd3.org/).
+
 Dependencies: [Redis](http://redis.io/) for store statistics.
 [D3](http://d3js.org/), [jQuery](http://jquery.com/), [Bootstrap](http://getbootstrap.com/) it's dependencies of MetricsGraphics.js.
 
 Preview:
 
-![ScreenShot](https://raw.github.com/accessd/models_stats/master/doc/img/stat_example.png)
+NVD3:
+
+![ScreenShot](https://raw.github.com/accessd/models_stats/master/doc/img/nvd3_example.png)
+
+MetricsGraphics.js
+
+![ScreenShot](https://raw.github.com/accessd/models_stats/master/doc/img/mg_example.png)
 
 ## Installation
 
