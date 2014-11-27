@@ -2,7 +2,12 @@
   $(function(){
     keys = <%= keys.to_json.html_safe %>
     data = <%= stat_data.to_json.html_safe %>
-    new ModelStatisticsGraph('<%= graph_title %>', keys, data, '<%= stat_alias %>', <%= width %>, <%= height %>)
+    <% case graphic_lib.to_s
+       when 'nvd3' %>
+     new Nvd3Graph(data, keys, '<%= stat_alias %>', '<%= graphic_type %>', <%= width %>, <%= height %>)
+    <% when 'metrics_graphics' %>
+    new MetricsGraph('<%= graph_title %>', keys, data, '<%= stat_alias %>', <%= width %>, <%= height %>)
+    <% end %>
   })
 </script>
 
@@ -13,8 +18,22 @@
   </br>
   </br>
 <% else %>
-  <div class="models_stats_graph" style='clear: both;'>
-    <div class='<%= stat_alias %>_statistics_legend legend' style='float: right;'></div>
-    <div class='col-lg-12 text-center extended-y-ticks' id='<%= stat_alias %>_statistics'></div>
-  </div>
+  <% case graphic_lib.to_s
+    when 'nvd3' %>
+    <h4 style="margin: 0;"><%= graph_title %></h4>
+    <div id="<%= stat_alias %>_statistics", style="height: <%= height %>px; width: <%= width %>px;">
+      <svg></svg>
+    </div>
+  <% when 'metrics_graphics' %>
+    <div class="models_stats_graph" style='clear: both;'>
+      <div class='<%= stat_alias %>_statistics_legend legend' style='float: right;'></div>
+      <div class='col-lg-12 text-center extended-y-ticks' id='<%= stat_alias %>_statistics'></div>
+    </div>
+  <% else %>
+    <%= graph_title %>
+    </br>
+    Unknown graphics lib
+    </br>
+    </br>
+  <% end %>
 <% end %>

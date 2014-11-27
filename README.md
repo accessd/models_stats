@@ -1,7 +1,9 @@
 # ModelsStats
 
-Graphics for your rails models. It uses [MetricsGraphics.js](https://github.com/mozilla/metrics-graphics).
-Dependencies: [Redis](http://redis.io/) for store statistics; [D3](http://d3js.org/), [jQuery](http://jquery.com/), [Bootstrap](http://getbootstrap.com/) it's dependencies of MetricsGraphics.js.
+Graphics for your rails models. It may show count(or average, or sum, or another sql agregate function) of models for each day with grouping, conditions.
+For graphics it uses for your choice [MetricsGraphics.js](https://github.com/mozilla/metrics-graphics) or/and [NVD3](http://nvd3.org/).
+Dependencies: [Redis](http://redis.io/) for store statistics.
+[D3](http://d3js.org/), [jQuery](http://jquery.com/), [Bootstrap](http://getbootstrap.com/) it's dependencies of MetricsGraphics.js.
 
 Preview:
 
@@ -21,13 +23,25 @@ And then execute:
 
 In your application.js manifest:
 
-    //= require models_stats/models_stats
+    //= require models_stats/nvd3
+
+or/and
+
+    //= require models_stats/metrics_graphics
+
+if you want use MetricsGraphics.
 
 In your application.css.scss manifest:
 
-    //= require models_stats/models_stats
+    //= require models_stats/nvd3
 
-Also you must have [jQuery](http://jquery.com/) and [Bootstrap](http://getbootstrap.com/) js/css included.
+or/and
+
+    //= require models_stats/metrics_graphics
+
+if you want use MetricsGraphics.
+
+Also if you use MetricsGraphics.js you must have [jQuery](http://jquery.com/) and [Bootstrap](http://getbootstrap.com/) js/css included.
 
 
 ## Usage
@@ -43,9 +57,11 @@ Add config file `config/models_stats.yml`, for example:
       model: Link
       group_by: :error_type_id
       conditions: "error_type_id != <%= Link::NO_ERROR %>"
-      group_by_values_map: <%= ModelsStats.convert_hash_to_yaml(Link::ERROR_NAMES) %> # for example map integer field to text represantation
+      group_by_values_map: <%= ModelsStats.convert_hash_to_yaml(Link::ERROR_NAMES) %> # for example maping integer field to text representation
       graph_width: 430
       graph_height: 140
+      graphic_lib: nvd3 # By default, or can be metrics_graphics
+      graphic_type: stacked # It's can be using with nvd3, by default line
   - average_by_keyword_positions:
       description: "Average by keyword positions"
       select_statement: "AVG(google_position) AS count" # Right here you may specify select query, `count` alias for function required
@@ -55,6 +71,22 @@ Add config file `config/models_stats.yml`, for example:
 If you want using specific redis for store statistics, set it in `config/initializers/models_stats.rb`, for example:
 
     ModelsStats.redis_connection = Redis.new(host: '127.0.0.1', port: 6379, db: 5)
+
+Default graphics library can be configured through:
+
+    ModelsStats.default_lib_for_graphics = :nvd3 # Or metrics_graphics
+
+Default graphics type:
+
+    ModelsStats.default_graphics_type = :line # Or stacked
+
+Default graph width:
+
+    ModelsStats.default_graphics_width = 500
+
+Default graph height:
+
+    ModelsStats.default_graphics_height = 120
 
 ### Collecting statistics
 

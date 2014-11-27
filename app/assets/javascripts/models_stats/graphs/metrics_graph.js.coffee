@@ -1,4 +1,4 @@
-class @ModelStatisticsGraph
+class @MetricsGraph
   constructor: (graph_title, keys, data, stat_alias, width, height) ->
     @width = width
     @height = height
@@ -21,8 +21,6 @@ class @ModelStatisticsGraph
   draw: ->
     placeholder_name = "#{@statAlias}_statistics"
 
-    console.log(@width)
-    console.log(@height)
     data_graphic
       title: @graphTitle
       area: true
