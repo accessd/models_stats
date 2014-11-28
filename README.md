@@ -76,6 +76,7 @@ Enhanced configuration:
   - total_links_by_error_types: # Statistics alias, must be uniq
       description: "Total links by error types"
       model: Link
+      datetime_attr: :created_at # Date or datetime attribute, allows to calculate the count of models per day
       group_by: :error_type_id
       conditions: "error_type_id != <%= Link::NO_ERROR %>"
       group_by_values_map: <%= ModelsStats.convert_hash_to_yaml(Link::ERROR_NAMES) %> # for example maping integer field to text representation
