@@ -58,6 +58,19 @@ Also if you use MetricsGraphics.js you must have [jQuery](http://jquery.com/) an
 
 Add config file `config/models_stats.yml`, for example:
 
+minimal configuration:
+
+```yaml
+  ---
+  - total_users:
+      description: "Total users"
+      model: User
+```
+
+it would be calculate total users for day.
+
+Enhanced configuration:
+
 ```yaml
   ---
   - total_links_by_error_types: # Statistics alias, must be uniq
