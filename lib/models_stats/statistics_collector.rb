@@ -21,25 +21,27 @@ module ModelsStats
 
         stat_for_model = stat_for(model, group_by, datetime_attr, params[:conditions], select_statement)
 
-        stat_for_model = if group_by.present?
-          converted_stat = convert_stat(stat_for_model, model, group_by_values_map)
-          group_by_values_map.each do |index, value|
-            unless converted_stat.keys.map(&:to_s).include?(value.to_s)
-              converted_stat[value.to_s] = 0
+        if stat_for_model.present?
+          stat_for_model = if group_by.present?
+            converted_stat = convert_stat(stat_for_model, model, group_by_values_map)
+            group_by_values_map.each do |index, value|
+              unless converted_stat.keys.map(&:to_s).include?(value.to_s)
+                converted_stat[value.to_s] = 0
+              end
             end
-          end
-          converted_stat
-        else
-          stat_key = if datetime_attr.present?
-            "New"
+            converted_stat
           else
-            "Total"
+            stat_key = if datetime_attr.present?
+              "New"
+            else
+              "Total"
+            end
+            count = stat_for_model.to_a.first.count
+            {stat_key => count.try(:round)}
           end
-          count = stat_for_model.to_a.first.count
-          {stat_key => count.try(:round)}
-        end
 
-        ModelsStats::Statistics.write_day(stat_for_model, stat_alias, date)
+          ModelsStats::Statistics.write_day(stat_for_model, stat_alias, date)
+        end
       end
     end
 
@@ -51,7 +53,7 @@ module ModelsStats
           group_by_attr_value = group_by_attr_value.to_s.to_sym
         end
         key = converter[group_by_attr_value]
-        stat_hash[key] = s.count
+        stat_hash[key || group_by_attr_value] = s.count
       end
       stat_hash
     end

@@ -6,7 +6,7 @@ module ModelsStats::GraphHelper
       keys, stat_data = ModelsStats::Statistics.for_period(stat_alias, period)
       graph_width = stat_params["graph_width"] || ModelsStats.default_graphics_width
       graph_height = stat_params["graph_height"] || ModelsStats.default_graphics_height
-      if stat_params["graphic_type"].present? && !stat_params["graphic_type"].in?(ModelsStats::GRAPHICS_TYPES)
+      if stat_params["graphic_type"].present? && !stat_params["graphic_type"].to_sym.in?(ModelsStats::GRAPHICS_TYPES)
         return "Unknown graphic type"
       end
       graphic_type = stat_params["graphic_type"] || ModelsStats.default_graphics_type

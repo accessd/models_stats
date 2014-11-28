@@ -4,11 +4,15 @@ module ModelsStats
 
     def self.default_group_by_values_map(group_by, model)
       model_klass = model.to_s.constantize
-      state_machine_states = model_klass.state_machine.states
-      state_machine_defined = !state_machine_states.first.name.nil?
+      if model_klass.respond_to?(:state_machine)
+        state_machine_states = model_klass.state_machine.states
+        state_machine_defined = !state_machine_states.first.name.nil?
 
-      if state_machine_defined #&& value_numeric?(group_by)
-        Hash[model.to_s.constantize.state_machine.states.map{|state| [state.value, state.name]}]
+        if state_machine_defined #&& value_numeric?(group_by)
+          Hash[model.to_s.constantize.state_machine.states.map{|state| [state.value, state.name]}]
+        else
+          {}
+        end
       else
         {}
       end
