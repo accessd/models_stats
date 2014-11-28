@@ -1,5 +1,5 @@
 module ModelsStats::GraphHelper
-  def render_models_stats_graph(stat_alias, period)
+  def render_models_stats_graph(stat_alias, period = 1.month)
     stat_params = ModelsStats::CONFIG.select{|config| name, params = config.first; name.to_s == stat_alias.to_s}.first
     if stat_params
       stat_params = stat_params.values[0]

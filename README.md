@@ -128,7 +128,7 @@ In your views use helpers:
 
 Render single graphic for total_links stat and last month
 
-    = render_models_stats_graph('total_links', 1.month)
+    = render_models_stats_graph('total_links', 1.week) # By default period is 1.month
 
 Render all defined graphics splited by two columns - first for new models count, second for total models count
 
