@@ -118,8 +118,8 @@ Also you may collect statistics for specific date and config, for example:
 
 ```ruby
   date = 2.days.ago.to_date
-  statistics_alias = 'total_links'
-  ModelsStats::StatisticsCollector.new.collect(statistics_alias, date)
+  statistics_alias = 'total_links_by_error_types' # statistic alias which you define in `config/models_stats.yml`
+  ModelsStats::StatisticsCollector.new.collect(statistics_alias, date) # By default date is yestarday
 ```
 
 ### Display graphics
