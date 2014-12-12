@@ -4,9 +4,9 @@
     data = <%= stat_data.to_json.html_safe %>
     <% case graphic_lib.to_s
        when 'nvd3' %>
-     new Nvd3Graph(data, keys, '<%= stat_alias %>', '<%= graphic_type %>', <%= width %>, <%= height %>)
+     new Nvd3Graph(data, keys, '<%= stat_alias %>', '<%= graphic_type %>', '<%= date_tick %>', '<%= date_format %>', <%= width %>, <%= height %>)
     <% when 'metrics_graphics' %>
-    new MetricsGraph('<%= graph_title %>', keys, data, '<%= stat_alias %>', <%= width %>, <%= height %>)
+    new MetricsGraph('<%= graph_title %>', keys, data, '<%= stat_alias %>', '<%= date_tick %>', '<%= date_format %>', <%= width %>, <%= height %>)
     <% end %>
   })
 </script>

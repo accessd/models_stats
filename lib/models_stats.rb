@@ -4,7 +4,8 @@ require "models_stats/statistics"
 require "models_stats/statistics_collector"
 
 module ModelsStats
-  mattr_accessor :redis_connection, :default_lib_for_graphics, :default_graphics_width, :default_graphics_height, :default_graphics_type
+  mattr_accessor :redis_connection, :default_lib_for_graphics, :default_graphics_width, :default_graphics_height, :default_graphics_type,
+    :default_date_tick, :default_date_format
   GRAPHICS_LIBS = [:nvd3, :metrics_graphics]
   GRAPHICS_TYPES = [:line, :stacked]
 
@@ -19,6 +20,8 @@ module ModelsStats
   self.default_graphics_width = 500
   self.default_graphics_height = 120
   self.default_graphics_type = :line
+  self.default_date_tick = 'day'
+  self.default_date_format = '%x'
 
   def self.convert_hash_to_yaml(hash)
     hash.to_yaml.sub("---", '').gsub("\n", "\n\s\s\s\s\s\s")

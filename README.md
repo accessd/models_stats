@@ -13,6 +13,8 @@ NVD3:
 
 ![ScreenShot](https://raw.github.com/accessd/models_stats/master/doc/img/nvd3_example.png)
 
+![ScreenShot](https://raw.github.com/accessd/models_stats/master/doc/img/nvd3_users_example.png)
+
 MetricsGraphics.js
 
 ![ScreenShot](https://raw.github.com/accessd/models_stats/master/doc/img/mg_example.png)
@@ -84,6 +86,8 @@ Enhanced configuration:
       graph_height: 140
       graphic_lib: nvd3 # By default, or can be metrics_graphics
       graphic_type: stacked # It's can be using with nvd3, by default line
+      date_tick: day # By default, or can be month or week
+      date_format: '%d/%m' # By default is %x, more information about formattting time available at https://github.com/mbostock/d3/wiki/Time-Formatting
   - average_by_keyword_positions:
       description: "Average by keyword positions"
       select_statement: "AVG(google_position) AS count" # Right here you may specify select query, `count` alias for function required
@@ -109,6 +113,16 @@ Default graph width:
 Default graph height:
 
     ModelsStats.default_graphics_height = 120
+
+Default date tick:
+
+    ModelsStats.default_date_tick = :day # Or month, week
+
+Default date format:
+
+    ModelsStats.default_date_format = '%d/%m'
+
+For the full list of directives for formatting time, refer to [this list](https://github.com/mbostock/d3/wiki/Time-Formatting)
 
 ### Collecting statistics
 

@@ -11,8 +11,11 @@ module ModelsStats::GraphHelper
       end
       graphic_type = stat_params["graphic_type"] || ModelsStats.default_graphics_type
       graphic_lib = stat_params["graphic_lib"] || ModelsStats.default_lib_for_graphics
+      date_tick = stat_params["date_tick"] || ModelsStats.default_date_tick
+      date_format = stat_params["date_format"] || ModelsStats.default_date_format
       render partial: 'models_stats/model_statistics_graph', locals: {graph_title: stat_params["description"] || stat_alias, keys: keys, stat_data: stat_data, 
-                                                                      stat_alias: stat_alias, width: graph_width, height: graph_height, graphic_lib: graphic_lib, graphic_type: graphic_type}
+                                                                      stat_alias: stat_alias, width: graph_width, height: graph_height, graphic_lib: graphic_lib, 
+                                                                      graphic_type: graphic_type, date_tick: date_tick, date_format: date_format}
     else
       "No params for #{stat_alias}"
     end
