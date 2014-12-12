@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = ModelsStats::VERSION
   spec.authors       = ["Andrey Morskov"]
   spec.email         = ["accessd0@gmail.com"]
-  spec.summary       = %q{Statistics for rails models}
-  spec.description   = %q{Graphics for rails models with MetricsGraphics.js}
-  spec.homepage      = ""
+  spec.summary       = %q{Graphics for your rails models with MetricsGraphics.js and NVD3}
+  spec.description   = %q{Graphics for your rails models with MetricsGraphics.js and NVD3. It may show count(or average, or sum, or another sql agregate function) of models for each day with grouping, conditions. Uses Redis for store statistics.}
+  spec.homepage      = "https://github.com/accessd/models_stats"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
