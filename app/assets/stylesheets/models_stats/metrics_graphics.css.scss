@@ -1,0 +1,15 @@
+//= require bootstrap.min
+//= require metricsgraphics
+
+.models_stats_graph .chart_title {
+  font-size: 15px;
+}
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: font-url('bootstrap/glyphicons-halflings-regular.eot');
+  src: font-url('bootstrap/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+  font-url('bootstrap/glyphicons-halflings-regular.woff') format('woff'),
+  font-url('bootstrap/glyphicons-halflings-regular.ttf') format('truetype'),
+  font-url('bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
