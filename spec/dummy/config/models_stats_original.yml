@@ -1,0 +1,12 @@
+---
+- total_users:
+    description: "Total users"
+    model: User
+    datetime_attr: created_at
+    group_by: state
+    group_by_values_map: <%= ModelsStats.convert_hash_to_yaml({0 => 'new', 1 => 'ok'}) %>
+    graphic_lib: metrics_graphics
+    graphic_type: stacked
+    graph_width: 1500
+    graph_height: 200
+    date_format: '%d/%m'

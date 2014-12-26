@@ -12,6 +12,7 @@ module ModelsStats
   class Engine < Rails::Engine
     initializer "models_stats.load_app_root" do |app|
       ModelsStats::CONFIG = YAML.load(ERB.new(File.read(Rails.root.join("config", "models_stats.yml").to_s)).result) rescue []
+      ModelsStats.check_config
     end
   end
 
@@ -26,4 +27,10 @@ module ModelsStats
   def self.convert_hash_to_yaml(hash)
     hash.to_yaml.sub("---", '').gsub("\n", "\n\s\s\s\s\s\s")
   end
+
+  def self.check_config
+    raise IncorrectConfigError, "Please check config, it must be an array" unless CONFIG.is_a?(Array)
+  end
+
+  class IncorrectConfigError < StandardError;end
 end
