@@ -10,3 +10,7 @@
     graph_width: 1500
     graph_height: 200
     date_format: '%d/%m'
+    date_tick: month
+- total_comments:
+    description: "Total comments"
+    model: Comment

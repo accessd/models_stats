@@ -6,6 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-10000.times do
-  User.create(name: 'test', created_at: "2014-#{rand(1..11)}-#{rand(1..30)}", type_of: ["admin", "plain"].sample, state: [0, 1].sample)
-end
+# 10000.times do
+#   User.create(name: 'test', created_at: "2014-#{rand(1..11)}-#{rand(1..30)}", type_of: ["admin", "plain"].sample, state: [0, 1].sample)
+# end

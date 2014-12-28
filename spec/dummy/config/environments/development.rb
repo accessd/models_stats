@@ -26,4 +26,7 @@ Dummy::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  REDIS_URL = "redis://127.0.0.1:6379/2"
+  config.cache_store = :redis_store, REDIS_URL
 end

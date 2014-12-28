@@ -5,6 +5,7 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'factory_girl_rails'
+require 'database_cleaner'
 
 load "#{Rails.root.to_s}/db/schema.rb" # set up memory db
 
@@ -24,9 +25,20 @@ RSpec.configure do |config|
     Capybara.use_default_driver # Revert Capybara.current_driver to Capybara.default_driver
   end
 
-  config.after(:each) do
-    config_file = File.expand_path("../dummy/config/models_stats.yml",  __FILE__)
-    original_config_file = File.expand_path("../dummy/config/models_stats_original.yml",  __FILE__)
-    FileUtils.cp(original_config_file, config_file)
+  config.before(:suite) do
+    Rails.cache.clear
+    puts "Truncating database"
+    DatabaseCleaner.clean_with(:truncation)
+
+    puts "Seeding data"
+    Seed.all
   end
+
+  config.after(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+end
+
+def stat_data
+  [[{:date=>"2014-12-01", :value=>10}, {:date=>"2014-12-03", :value=>0}, {:date=>"2014-12-15", :value=>9}], [{:date=>"2014-12-01", :value=>0}, {:date=>"2014-12-03", :value=>4}, {:date=>"2014-12-15", :value=>0}]]
 end

@@ -33,4 +33,7 @@ Dummy::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  REDIS_URL = "redis://127.0.0.1:6379/2"
+  config.cache_store = :redis_store, REDIS_URL
 end
