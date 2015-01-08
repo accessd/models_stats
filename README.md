@@ -140,9 +140,11 @@ Also you may collect statistics for specific date and config, for example:
 
 In your views use helpers:
 
-Render single graphic for total_links_by_error_types statistic alias(which you define in `config/models_stats.yml`) and last week
+Render single graphic for total_links_by_error_types statistic alias(which you define in `config/models_stats.yml`) and last week:
 
-    = render_models_stats_graph('total_links_by_error_types', 1.week) # By default period is 1.month
+    = render_models_stats_graph('total_links_by_error_types', 1.week, 800, 200) # By default period is 1.month
+
+With two last parameters you can customize width and height of the chart. In this case it will be 800px and 200px.
 
 Render all defined graphics splited by two columns - first for new models count, second for total models count
 
