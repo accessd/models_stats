@@ -136,6 +136,15 @@ Also you may collect statistics for specific date and config, for example:
   ModelsStats::StatisticsCollector.new.collect(statistics_alias, date) # By default date is yestarday
 ```
 
+### Clear statistics
+
+You may clear statistics data for particular alias.
+
+```ruby
+  c = ModelsStats::StatisticsCollector.new
+  c.clear_all_data('total_links_by_error_types')
+```
+
 ### Display graphics
 
 In your views use helpers:
