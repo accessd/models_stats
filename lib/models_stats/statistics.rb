@@ -67,6 +67,10 @@ module ModelsStats
       hash.bulk_set(stat)
     end
 
+    def self.full_key_matched(stat_alias)
+      "#{key_prefix}:#{stat_alias}:*"
+    end
+
     private
 
     def self.read(stat_alias, date)

@@ -2,6 +2,12 @@ module ModelsStats
   class StatisticsCollector
     attr_accessor :date
 
+    def clear_all_data(stat_alias)
+      matched_key = ModelsStats::Statistics.full_key_matched(stat_alias)
+      keys = ModelsStats.redis_connection.keys(matched_key)
+      ModelsStats.redis_connection.del(keys)
+    end
+
     def collect(stat_alias = nil, date = 1.day.ago.to_date)
       self.date = date
       stat_params = ModelsStats::CONFIG.select{|params| name, p = params.first; name.to_s == stat_alias.to_s}
