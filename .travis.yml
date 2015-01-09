@@ -7,3 +7,6 @@ rvm:
 notifications:
   email:
     - accessd0@gmail.com
+
+services:
+  - redis-server
