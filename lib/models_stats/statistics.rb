@@ -46,6 +46,7 @@ module ModelsStats
 
       all_keys.each do |key|
         values = []
+        model_statistics.sort_by! {|value| value[0]}
         model_statistics.each do |stat|
           date = stat[0]
           stat[1].each do |k, count|
@@ -55,7 +56,7 @@ module ModelsStats
           end
         end
 
-        stat << values
+        stat << values#.sort_by {|value| Date.parsevalue[:date]}
       end
 
       return all_keys, stat

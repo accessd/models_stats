@@ -40,5 +40,5 @@ RSpec.configure do |config|
 end
 
 def stat_data
-  [[{:date=>"2014-12-01", :value=>10}, {:date=>"2014-12-03", :value=>0}, {:date=>"2014-12-15", :value=>9}], [{:date=>"2014-12-01", :value=>0}, {:date=>"2014-12-03", :value=>4}, {:date=>"2014-12-15", :value=>0}]]
+  [[{:date=>"2014-12-15", :value=>9}, {:date=>"2015-01-01", :value=>10}, {:date=>"2015-01-03", :value=>0}], [{:date=>"2014-12-15", :value=>0}, {:date=>"2015-01-01", :value=>0}, {:date=>"2015-01-03", :value=>4}]]
 end
