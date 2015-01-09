@@ -28,4 +28,7 @@ ActiveRecord::Schema.define(version: 20140320182332) do
     t.datetime "updated_at"
   end
 
+  create_table "profiles", force: true do |t|
+  end
+
 end

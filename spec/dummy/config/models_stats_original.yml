@@ -14,3 +14,7 @@
 - total_comments:
     description: "Total comments"
     model: Comment
+- total_profiles:
+    description: "Total profiles"
+    model: Profile
+    graphic_type: stack

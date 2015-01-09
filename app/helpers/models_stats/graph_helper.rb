@@ -19,7 +19,7 @@ module ModelsStats::GraphHelper
                        ModelsStats.default_graphics_height
                      end
       if stat_params["graphic_type"].present? && !stat_params["graphic_type"].to_sym.in?(ModelsStats::GRAPHICS_TYPES)
-        return "Unknown graphic type"
+        return "Unknown graphic type #{stat_params["graphic_type"]}"
       end
       graphic_type = stat_params["graphic_type"] || ModelsStats.default_graphics_type
       graphic_lib = stat_params["graphic_lib"] || ModelsStats.default_lib_for_graphics

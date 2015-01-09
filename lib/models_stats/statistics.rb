@@ -56,7 +56,7 @@ module ModelsStats
           end
         end
 
-        stat << values#.sort_by {|value| Date.parsevalue[:date]}
+        stat << values
       end
 
       return all_keys, stat

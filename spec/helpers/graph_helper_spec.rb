@@ -18,5 +18,9 @@ describe ModelsStats::GraphHelper, type: :helper do
       expect(helper).to receive(:render).with(params)
       helper.render_models_stats_graph('total_users')
     end
+
+    it "returns message if not known graphic type passed" do
+      expect(helper.render_models_stats_graph('total_profiles')).to eq('Unknown graphic type stack')
+    end
   end
 end
